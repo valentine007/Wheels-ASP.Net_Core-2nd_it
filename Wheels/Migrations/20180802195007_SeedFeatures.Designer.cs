@@ -9,8 +9,8 @@ using Wheels.Persistence;
 namespace Wheels.Migrations
 {
     [DbContext(typeof(WheelsDBContext))]
-    [Migration("20180730204927_ApplyConstraints")]
-    partial class ApplyConstraints
+    [Migration("20180802195007_SeedFeatures")]
+    partial class SeedFeatures
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -19,6 +19,21 @@ namespace Wheels.Migrations
                 .HasAnnotation("ProductVersion", "2.1.1-rtm-30846")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+            modelBuilder.Entity("Wheels.Models.Feature", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasMaxLength(255);
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Features");
+                });
 
             modelBuilder.Entity("Wheels.Models.Make", b =>
                 {

@@ -27,7 +27,7 @@ namespace Wheels
         {
 			services.AddAutoMapper();
 
-			services.AddDbContext<WheelsDbContext>(options => options.UseSqlServer(Configuration.GetConnectionString("Default")));
+			services.AddDbContext<WheelsDBContext>(options => options.UseSqlServer(Configuration.GetConnectionString("Default")));
 
             services.AddMvc();
         }
